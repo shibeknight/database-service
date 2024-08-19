@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import 'dotenv/config';
 
 async function seed() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/videoDatabase");
+    console.log('uri?', process.env.MONGODB_URI)
+    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/videoDatabase"
+    await mongoose.connect(mongoURI);
     console.log("Mongo DB connected");
 
     const videoSchema = new mongoose.Schema({

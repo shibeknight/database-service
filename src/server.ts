@@ -6,7 +6,8 @@ const port = process.env.PORT || 3000;
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/videoDatabase");
+    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/videoDatabase"
+    await mongoose.connect(mongoURI);
     console.log("Mongo DB connected");
   } catch (error) {
     console.log("Error connecting to db");
