@@ -1,6 +1,6 @@
 # Database Service
 
-This service works as a mockup of the database service, fetching video metadata to load in the front page of the application.
+This API works as a mockup/prototype of the database service, fetching video metadata to load on the front page of the application.
 
 ## Deployment
 
