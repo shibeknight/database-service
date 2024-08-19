@@ -1,13 +1,21 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
-import 'dotenv/config';
+import cors from "cors";
+import "dotenv/config";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Use CORS with specific origin
+app.use(
+  cors({
+    origin: "https://notyoutubeagain.netlify.app",
+  })
+);
+
 async function connectToDatabase() {
   try {
-    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/videoDatabase"
+    const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/videoDatabase";
     await mongoose.connect(mongoURI);
     console.log("Mongo DB connected");
   } catch (error) {
@@ -41,5 +49,5 @@ app.get("/metadata/videos", async (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
-})
+  console.log(`Server running on port ${port}`);
+});
